@@ -41,7 +41,7 @@ const TransactionForm = ({ open, handleClose, transaction, onSuccess }) => {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/categories/');
+      const response = await axios.get('/api/categories/');
       let data = response.data;
       if (Array.isArray(data)) {
         setCategories(data);
@@ -60,9 +60,9 @@ const TransactionForm = ({ open, handleClose, transaction, onSuccess }) => {
     e.preventDefault();
     try {
       if (transaction) {
-        await axios.put(`http://localhost:8000/api/transactions/${transaction.id}/`, formData);
+        await axios.put(`/api/transactions/${transaction.id}/`, formData);
       } else {
-        await axios.post('http://localhost:8000/api/transactions/', formData);
+        await axios.post('/api/transactions/', formData);
       }
       onSuccess();
       handleClose();

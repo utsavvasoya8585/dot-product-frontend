@@ -62,7 +62,7 @@ const TransactionList = () => {
         params.append('category', filters.category);
       }
 
-      const response = await axios.get(`http://localhost:8000/api/transactions/?${params}`);
+      const response = await axios.get(`/api/transactions/?${params}`);
       setTransactions(response.data.results);
       setLoading(false);
     } catch (err) {
@@ -73,7 +73,7 @@ const TransactionList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8000/api/transactions/${id}/`);
+      await axios.delete(`/api/transactions/${id}/`);
       fetchTransactions();
     } catch (err) {
       setError('Failed to delete transaction');
